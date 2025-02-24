@@ -10,13 +10,32 @@ class CityRespository{
             throw{error};
          }
     }
-    async deleteCity( cityid){
+    async deleteCity( cityid ){
 
         try {
             await City.destroy({
                 where : cityid
 
             })
+            return true ; 
+        } catch (error) {
+            throw{error};
+        }
+    }
+    async getCity( cityid ){
+        try {
+            const city = await City.findByPk(cityid);
+            return city;
+        } catch (error) {
+            throw {error};
+        }
+    }
+    async updateCity(cityid,data){
+        try {
+            const city = await City.update(data,{
+                where: cityid
+            })
+            return city;
         } catch (error) {
             throw{error};
         }
