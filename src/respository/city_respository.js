@@ -10,11 +10,11 @@ class CityRespository{
             throw{error};
          }
     }
-    async deleteCity( cityid ){
+    async deleteCity( cityId ){
 
         try {
             await City.destroy({
-                where : cityid
+                where : cityId
 
             })
             return true ; 
@@ -22,18 +22,18 @@ class CityRespository{
             throw{error};
         }
     }
-    async getCity( cityid ){
+    async getCity( cityId ){
         try {
-            const city = await City.findByPk(cityid);
+            const city = await City.findByPk(cityId);
             return city;
         } catch (error) {
             throw {error};
         }
     }
-    async updateCity(cityid,data){
+    async updateCity(cityId,data){
         try {
             const city = await City.update(data,{
-                where: cityid
+                where: cityId
             })
             return city;
         } catch (error) {
