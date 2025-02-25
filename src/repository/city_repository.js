@@ -1,22 +1,21 @@
 const {City} = require('../models');
 
-console.log('City Model:', City);
+// console.log('City Model:', City);
 
 class CityRepository{
     async createCity(data){
          try {
             const city = await City.create(data);
-            console.log(city);
+            //console.log(city);
             return city;
          } catch (error) {
             throw{error};
          }
     }
     async deleteCity( cityId ){
-
         try {
             await City.destroy({
-                where : cityId
+                where: { id: cityId }
 
             })
             return true ; 
@@ -35,7 +34,7 @@ class CityRepository{
     async updateCity(cityId,data){
         try {
             const city = await City.update(data,{
-                where: cityId
+                where: { id: cityId }
             })
             return city;
         } catch (error) {
