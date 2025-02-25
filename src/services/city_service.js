@@ -1,13 +1,14 @@
-const { CityRespository } = require('../respository/index');
+const { CityRepository } = require('../repository/index.js');
 
 
-class cityService{
+class CityService{
     constructor (){
-        this.cityRespository = new CityRespository();
+        this.cityRepository = new CityRepository();
     }
     async createCity(data){
         try {
-            const city  = await this.cityRespository.createCity(data);
+            
+            const city  = await this.cityRepository.createCity(data);
             return city;
             
         } catch (error) {
@@ -17,7 +18,7 @@ class cityService{
     }
     async deleteCity(cityId){
         try {
-            const response = await this.cityRespository.deleteCity(cityId);
+            const response = await this.cityRepository.deleteCity(cityId);
             return response;
         } catch (error) {
            console.log("something went wrong ") ;
@@ -26,7 +27,7 @@ class cityService{
     }
     async updateCity(cityId,data){
         try {
-            const city  = await this.cityRespository.updateCity(cityId,data);
+            const city  = await this.cityRepository.updateCity(cityId,data);
             return city;
         } catch (error) {
            console.log("something went wrong ") ;
@@ -35,7 +36,7 @@ class cityService{
     }
     async getCity(cityId){
         try {
-            const city = await this.cityRespository.getCity(cityId);
+            const city = await this.cityRepository.getCity(cityId);
             return city;
         } catch (error) {
            console.log("something went wrong ") ;
@@ -43,3 +44,5 @@ class cityService{
         }
     }
 }
+
+module.exports = CityService

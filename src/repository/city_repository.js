@@ -1,10 +1,12 @@
-const {City} = require('../models/index');
+const {City} = require('../models');
 
+console.log('City Model:', City);
 
-class CityRespository{
-    async createCity({ name }){
+class CityRepository{
+    async createCity(data){
          try {
-            const city = await City.create({ name });
+            const city = await City.create(data);
+            console.log(city);
             return city;
          } catch (error) {
             throw{error};
@@ -44,3 +46,5 @@ class CityRespository{
 
 
 }
+
+module.exports = CityRepository
