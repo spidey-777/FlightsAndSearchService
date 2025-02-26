@@ -1,22 +1,22 @@
-const {CityService} = require('../services/index.js');
+const {AirportService} = require('../services/index.js');
 
-const cityService  = new CityService();
+const airportService  = new AirportService();
 
 
 const create = async (req,res) =>{
     
     try {
-        let cities;
+        let airports;
         if(Array.isArray(req.body)){
          //   console.log(req.body);
-            cities = await cityService.createMultipleCity(req.body);
+            airports = await airportService.createMultipleAirport(req.body);
         }else{
-        cities = await cityService.createCity(req.body);
+        airports = await airportService.createAirport(req.body);
         }
         return res.status(201).json({ 
-            data : cities,
+            data : airports,
             success : true,
-            message : 'Successfully created city ',
+            message : 'Successfully created airport ',
             err : {}
         });
         
@@ -33,11 +33,11 @@ const create = async (req,res) =>{
 const destroy = async(req,res) =>{
     try {
         //console.log(req.params.id)
-        const response = await cityService.deleteCity(req.params.id);
+        const response = await airportService.deleteAirport(req.params.id);
         return res.status(200).json({
             data : response,
             success : true,
-            message : 'Successfully deleted  city ',
+            message : 'Successfully deleted  airport ',
             err : {}
         });
         
@@ -53,11 +53,11 @@ const destroy = async(req,res) =>{
 }
 const update = async(req,res) =>{
     try {
-        const response = await cityService.updateCity(req.params.id,req.body);
+        const response = await airportService.updateAirport(req.params.id,req.body);
         return res.status(200).json({
             data : response,
             success : true,
-            message : 'Successfully updated the city ',
+            message : 'Successfully updated the airport ',
             err : {}
         });
         
@@ -73,11 +73,11 @@ const update = async(req,res) =>{
 }
 const get = async(req,res) =>{
     try {
-        const response = await cityService.getCity(req.params.id);
+        const response = await airportService.getAirport(req.params.id);
         return res.status(200).json({
             data : response,
             success : true,
-            message : 'Successfully fatched  city ',
+            message : 'Successfully fatched  airport ',
             err : {}
         });
         
@@ -94,11 +94,11 @@ const get = async(req,res) =>{
 const getAll = async(req,res)=>{
     try {
        // console.log(req.query);
-        const response = await cityService.getAllCity(req.query);
+        const response = await airportService.getAllAirport(req.query);
         return res.status(200).json({
             data : response,
             success : true,
-            message : 'Successfully fatched  city ',
+            message : 'Successfully fatched  airport ',
             err : {}
         });
         
@@ -108,26 +108,6 @@ const getAll = async(req,res)=>{
             data :{},
             success : false,
             err : error
-        })
-    }
-}
-const getAirport= async(req,res) =>{
-    try {
-        const response = await cityService.getAirportByCityId(req.params.id);
-        return res.status(200).json({
-            data : response,
-            success : true,
-            message : 'Successfully fatched  city ',
-            err : {}
-        });
-        
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            data :{},
-            success : false,
-            err : error
-            
         })
     }
 }
@@ -138,6 +118,5 @@ module.exports = {
     destroy,
     update,
     get,
-    getAll,
-    getAirport
+    getAll
 }

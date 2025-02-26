@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const {City} = require('../models');
+const {City, Airport } = require('../models');
 
 // console.log('City Model:', City);
 
@@ -13,6 +13,15 @@ class CityRepository{
             throw{error};
          }
     }
+    async createMultipleCity(cities) { 
+        try {
+            console.log(cities);
+            return await City.bulkCreate(cities);
+        } catch (error) {
+            throw error;
+        }
+    }
+    
     async deleteCity( cityId ){
         try {
             await City.destroy({
@@ -32,6 +41,7 @@ class CityRepository{
             throw {error};
         }
     }
+    
     async updateCity(cityId,data){
         try {
             const city = await City.update(data,{
@@ -59,6 +69,17 @@ class CityRepository{
             return cities;
         } catch (error) {
             throw{error};
+        }
+    }
+    async getAirportByCityId( cityId ){
+        try {
+            const airports = await Airport.findAll({
+                where: { cityId: cityId }
+            });
+            return airports;
+        } catch (error) {
+            console.error("Error fetching airports:", error);
+            throw error;
         }
     }
 

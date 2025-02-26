@@ -16,6 +16,18 @@ class CityService{
            throw{error};
         }
     }
+    async createMultipleCity(data){
+        try {
+            console.log(data);
+            console.log("jai hoo");
+            const city  = await this.cityRepository.createMultipleCity(data);
+            return city;
+            
+        } catch (error) {
+           console.log("something went wrong ") ;
+           throw{error};
+        }
+    }
     async deleteCity(cityId){
         try {
             const response = await this.cityRepository.deleteCity(cityId);
@@ -43,6 +55,15 @@ class CityService{
            throw{error};
         }
     }
+    async getAirportByCityId(cityId){
+        try {
+            const airports = await this.cityRepository.getAirportByCityId(cityId);
+            return airports;
+        } catch (error) {
+           console.log("something went wrong ") ;
+           throw{error};
+        }
+    }
     async getAllCity(filter){
         try {
             const a = {name : filter.name};
@@ -55,5 +76,6 @@ class CityService{
         }
     }
 }
+
 
 module.exports = CityService
