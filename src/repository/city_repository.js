@@ -18,7 +18,7 @@ class CityRepository{
             console.log(cities);
             return await City.bulkCreate(cities);
         } catch (error) {
-            throw error;
+            throw {error};
         }
     }
     

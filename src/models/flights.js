@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
     },
     departureAirportId:{
-      tyoe: DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     arrivalAirportId:{
