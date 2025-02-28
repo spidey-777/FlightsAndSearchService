@@ -28,7 +28,7 @@ class FlightRepository{
 
     async createFlight(data){
         try {
-            console.log(data);
+           // console.log(data);
             const flight = await Flights.create(data);
            // console.log(flight);
              return flight;

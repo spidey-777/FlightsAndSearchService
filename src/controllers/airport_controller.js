@@ -11,7 +11,7 @@ const create = async (req,res) =>{
          //   console.log(req.body);
             airports = await airportService.createMultipleAirport(req.body);
         }else{
-        airports = await airportService.createAirport(req.body);
+        airports = await airportService.create(req.body);
         }
         return res.status(201).json({ 
             data : airports,
@@ -33,7 +33,7 @@ const create = async (req,res) =>{
 const destroy = async(req,res) =>{
     try {
         //console.log(req.params.id)
-        const response = await airportService.deleteAirport(req.params.id);
+        const response = await airportService.destroy(req.params.id);
         return res.status(200).json({
             data : response,
             success : true,
@@ -53,7 +53,7 @@ const destroy = async(req,res) =>{
 }
 const update = async(req,res) =>{
     try {
-        const response = await airportService.updateAirport(req.params.id,req.body);
+        const response = await airportService.update(req.params.id,req.body);
         return res.status(200).json({
             data : response,
             success : true,
@@ -73,7 +73,7 @@ const update = async(req,res) =>{
 }
 const get = async(req,res) =>{
     try {
-        const response = await airportService.getAirport(req.params.id);
+        const response = await airportService.get(req.params.id);
         return res.status(200).json({
             data : response,
             success : true,
@@ -94,7 +94,7 @@ const get = async(req,res) =>{
 const getAll = async(req,res)=>{
     try {
        // console.log(req.query);
-        const response = await airportService.getAllAirport(req.query);
+        const response = await airportService.getAll (req.query);
         return res.status(200).json({
             data : response,
             success : true,

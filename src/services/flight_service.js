@@ -13,7 +13,6 @@ class FlightService{
                 throw{ error :'arrival time can not be less then departure time '}
             }
             const airplane = await this.airplaneRepository.getAirplane(data.airplaneId);
-            console.log({...data,totalSeats:airplane.capacity})
             const flight = await this.flightRepository.createFlight({
                 ...data,
                 totalSeats: airplane.capacity
